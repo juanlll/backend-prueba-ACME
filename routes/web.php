@@ -12,5 +12,17 @@
 */
 
 Route::get('/', function () {
-    return redirect("/dist");
+ return \File::get(public_path() . '/dist/index.html');
+});
+
+Route::get('/home', function () {
+    return \File::get(public_path() . '/dist/index.html');
+});
+
+Route::get('/about', function () {
+    return \File::get(public_path() . '/dist/index.html');
+});
+
+Route::get('/login', function () {
+    return \File::get(public_path() . '/dist/index.html');
 });
