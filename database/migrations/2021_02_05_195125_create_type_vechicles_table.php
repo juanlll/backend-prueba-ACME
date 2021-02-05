@@ -15,6 +15,8 @@ class CreateTypeVechiclesTable extends Migration
     {
         Schema::create('type_vechicles', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->boolean('status');
             $table->timestamps();
         });
     }
