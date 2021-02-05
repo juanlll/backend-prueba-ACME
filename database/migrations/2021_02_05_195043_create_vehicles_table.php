@@ -15,6 +15,10 @@ class CreateVehiclesTable extends Migration
     {
         Schema::create('vehicles', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('vehicle_plate');
+            $table->integer('type_id');
+            $table->foreign('type_id')->references('id')->on('persons');
+            $table->boolean('status');
             $table->timestamps();
         });
     }

@@ -23,10 +23,10 @@ class Assignment extends Model
      * @var array
      */
     protected $casts = [
-        'driver_id' => 'integer',
-        'owner_id'  => 'integer',
-        'type_id'   => 'integer',
-        'status'    => 'integer',
+        'driver_id'  => 'integer',
+        'owner_id'   => 'integer',
+        'type_id'    => 'integer',
+        'status'     => 'integer',
     ];
 
     /**
@@ -35,10 +35,10 @@ class Assignment extends Model
      * @var array
      */
     public static $rules = [
-        'nombre'    => 'required|min:2|max:11',
-        'apellidos' => 'required|min:2|max:11',
-        'direccion' => 'required|min:2|max:11',
-        'telefono'  => 'required|min:2|max:11',
+        'driver_id'    => 'required|min:2|max:11',
+        'owner_id'     => 'required|min:2|max:11',
+        'type_id'      => 'required|min:2|max:11',
+        'status'       => 'required',
     ];
 
 }
