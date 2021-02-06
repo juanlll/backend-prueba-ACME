@@ -18,4 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('cities','CityController');
+Route::resource('vehicles','VehicleController');
+Route::resource('type-vehicles','TypeVehicleController');
+Route::resource('assignments','AssignmentController');
+Route::resource('persons','PersonController');
+Route::resource('processes','ProcessController');
 

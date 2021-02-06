@@ -6,8 +6,9 @@ use App\Models\Vehicle;
 use App\Repositories\VehicleRepository;
 use Illuminate\Http\Request;
 use App\Http\Requests\VehicleRequest;
+use App\Http\Controllers\AppBaseController;
 
-class VehicleController extends Controller
+class VehicleController extends AppBaseController
 {
     protected $vehicleRepo;
 

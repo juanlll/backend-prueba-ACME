@@ -22,6 +22,7 @@ class CreatePeopleTable extends Migration
             $table->bigInteger('phone');
             $table->integer('city_id')->unsigned();
             $table->foreign('city_id')->references('id')->on('cities');
+            $table->boolean('status');
             $table->timestamps();
         });
     }

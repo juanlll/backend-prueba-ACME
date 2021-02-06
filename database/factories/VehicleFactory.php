@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Vehicle::class, function (Faker $faker) {
+$factory->define(App\Models\Vehicle::class, function (Faker $faker) {
     return [
         //
     ];

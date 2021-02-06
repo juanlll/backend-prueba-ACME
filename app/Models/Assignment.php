@@ -35,9 +35,9 @@ class Assignment extends Model
      * @var array
      */
     public static $rules = [
-        'driver_id'       => 'required|min:2|max:11',
-        'process_id'      => 'required|min:2|max:11',
-        'vehicle_id'      => 'required|min:2|max:11',
+        'driver_id'       => 'required',
+        'process_id'      => 'required',
+        'vehicle_id'      => 'required',
         'status'          => 'required',
     ];
 

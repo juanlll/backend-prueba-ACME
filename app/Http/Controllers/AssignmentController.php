@@ -6,8 +6,9 @@ use App\Models\Assignment;
 use App\Repositories\AssignmentRepository;
 use Illuminate\Http\Request;
 use App\Http\Requests\AssignmentRequest;
+use App\Http\Controllers\AppBaseController;
 
-class AssignmentController extends Controller
+class AssignmentController extends AppBaseController
 {
     protected $assignmentRepo;
 

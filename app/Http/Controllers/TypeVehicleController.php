@@ -6,8 +6,10 @@ use App\Models\TypeVehicle;
 use App\Repositories\TypeVehicleRepository;
 use Illuminate\Http\Request;
 use App\Http\Requests\TypeVehicleRequest;
+use App\Http\Controllers\AppBaseController;
 
-class TypeVehicleController extends Controller
+
+class TypeVehicleController extends AppBaseController
 {
     protected $typeVehicleRepo;
 

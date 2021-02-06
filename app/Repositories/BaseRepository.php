@@ -38,19 +38,17 @@ abstract class BaseRepository {
     }
 
     /**
-     ** Funcion para eliminar un registro por $id
+     ** Funcion para eliminar un registro por $id de manera logica
      **/
     public function delete($object) {
-        $object->delete();
+        $object->status = 0;
+        $object->update();
     }
 
     /**
-     ** Funcion para validar con las reglas del modelo
+     ** Funcion para consultar todos los registros
      **/
-    public function validateRequest($request){
-        dd("dsdsa");
-
-
+    public function getOnlyEnables() {
+        return $this->getModel()->where('status',1)->get();
     }
-
 }

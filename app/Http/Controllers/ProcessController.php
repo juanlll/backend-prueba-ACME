@@ -6,8 +6,9 @@ use App\Models\Process;
 use App\Repositories\ProcessRepository;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProcessRequest;
+use App\Http\Controllers\AppBaseController;
 
-class ProcessController extends Controller
+class ProcessController extends AppBaseController
 {
     protected $processRepo;
 

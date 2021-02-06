@@ -17,6 +17,7 @@ class Person extends Model
         'address',
         'phone',
         'city_id',
+        'status',
     ];
 
     /**
@@ -26,11 +27,12 @@ class Person extends Model
      */
     protected $casts = [
         'first_name'           => 'string',
-        'second_name'          => 'integer',
+        'second_name'          => 'string',
         'last_names'           => 'string',
-        'address'              => 'integer',
-        'phone'                => 'string',
+        'address'              => 'string',
+        'phone'                => 'integer',
         'city_id'              => 'integer',
+        'status'              =>  'integer',
     ];
 
     /**
@@ -39,12 +41,15 @@ class Person extends Model
      * @var array
      */
     public static $rules = [
-        'first_name'           => 'required|min:2|max:11',
-        'first_name'           => 'required|min:2|max:11',
-        'second_name'          => 'required|min:2|max:11',
-        'last_names'           => 'required|min:2|max:11',
-        'address'              => 'required|min:2|max:11',
-        'phone'                => 'required|min:2|max:11',
+        'first_name'           => 'required|min:2|max:50',
+        'first_name'           => 'required|min:2|max:50',
+        'second_name'          => 'required|min:2|max:50',
+        'last_names'           => 'required|min:2|max:50',
+        'address'              => 'required|min:2|max:200',
+        'phone'                => 'required|min:2|max:10',
         'city_id'              => 'required',
+        'status'              => 'required',
     ];
+
+
 }

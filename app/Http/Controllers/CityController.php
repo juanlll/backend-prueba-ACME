@@ -23,7 +23,8 @@ class CityController extends AppBaseController
      */
     public function index()
     {
-        return $this->cityRepo->getAll();
+        $cities = $this->cityRepo->getAll();
+        return $this->sendResponse($cities->toArray(), 'Ciudades Encontradas!');
     }
 
     /**

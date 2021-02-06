@@ -6,8 +6,9 @@ use App\Models\Person;
 use App\Repositories\PersonRepository;
 use Illuminate\Http\Request;
 use App\Http\Requests\PersonRequest;
+use App\Http\Controllers\AppBaseController;
 
-class PersonController extends Controller
+class PersonController extends AppBaseController
 {
     protected $personRepo;
 
@@ -22,7 +23,7 @@ class PersonController extends Controller
      */
     public function index()
     {
-        $persons = $this->personRepo->getAll();
+        $persons = $this->personRepo->getOnlyEnables();
         return $this->sendResponse($persons->toArray(), 'Personas encontradas!');
     }
 
@@ -47,6 +48,7 @@ class PersonController extends Controller
     public function show($id)
     {
         $person = $this->personRepo->find($id);
+        return $person;
         return $this->sendResponse($person->toArray(), 'Persona encontrada!');
     }
 
