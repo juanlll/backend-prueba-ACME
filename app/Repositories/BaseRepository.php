@@ -44,4 +44,13 @@ abstract class BaseRepository {
         $object->delete();
     }
 
+    /**
+     ** Funcion para validar con las reglas del modelo
+     **/
+    public function validateRequest($request){
+        dd("dsdsa");
+
+
+    }
+
 }

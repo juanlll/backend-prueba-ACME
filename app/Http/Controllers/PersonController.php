@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Person;
+use App\Models\Person;
+use App\Repositories\PersonRepository;
 use Illuminate\Http\Request;
+use App\Http\Requests\PersonRequest;
 
 class PersonController extends Controller
 {
+    protected $personRepo;
+
+    public function __construct(PersonRepository $personRepository)
+    {
+        $this->personRepo = $personRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,17 +22,8 @@ class PersonController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $persons = $this->personRepo->getAll();
+        return $this->sendResponse($persons->toArray(), 'Personas encontradas!');
     }
 
     /**
@@ -33,53 +32,59 @@ class PersonController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PersonRequest $personRequest)
     {
-        //
+        $person =  $this->personRepo->create($personRequest->all());
+        return $this->sendResponse($person->toArray(), 'Persona Creada!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Person  $person
+     * @param  \App\Models\Person  $person
      * @return \Illuminate\Http\Response
      */
-    public function show(Person $person)
+    public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Person  $person
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Person $person)
-    {
-        //
+        $person = $this->personRepo->find($id);
+        return $this->sendResponse($person->toArray(), 'Persona encontrada!');
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Person  $person
+     * @param  \App\Models\Person  $person
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Person $person)
+    public function update(PersonRequest $request, $id)
     {
-        //
+        $person = $this->personRepo->find($id);
+
+        if (is_null($person)) {
+            return response()->json(["message" => "No se puedo encontrar la persona"], 404);
+        }
+        $person = $this->personRepo->update($person, $request->all());
+
+        return $this->sendResponse($person->toArray(), 'Persona encontrada!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Person  $person
+     * @param  \App\Models\Person  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Person $person)
+    public function destroy($id)
     {
-        //
+        $person = $this->personRepo->find($id);
+
+        if (is_null($person)) {
+            return response()->json(["message" => "No se puedo encontrar la persona"], 404);
+        }
+
+        $this->personRepo->delete($person);
+
+        return $this->sendResponse($id, 'Persona eliminada!');
     }
 }

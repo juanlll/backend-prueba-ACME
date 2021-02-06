@@ -2,11 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\City;
+use App\Models\City;
 use Illuminate\Http\Request;
+use App\Repositories\CityRepository;
+use App\Http\Requests\CityRequest;
+use App\Http\Controllers\AppBaseController;
 
-class CityController extends Controller
+class CityController extends AppBaseController
 {
+    protected $cityRepo;
+
+    public function __construct(CityRepository $cityRepository)
+    {
+        $this->cityRepo = $cityRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,17 +23,7 @@ class CityController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return $this->cityRepo->getAll();
     }
 
     /**
@@ -33,9 +32,10 @@ class CityController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CityRequest $cityRequest)
     {
-        //
+        $city =  $this->cityRepo->create($cityRequest->all());
+        return $this->sendResponse($city->toArray(), 'Ciudad Creada!');
     }
 
     /**
@@ -44,20 +44,10 @@ class CityController extends Controller
      * @param  \App\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function show(City $city)
+    public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\City  $city
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(City $city)
-    {
-        //
+        $city = $this->cityRepo->find($id);
+        return $this->sendResponse($city->toArray(), 'Ciudad encontrada!');
     }
 
     /**
@@ -67,19 +57,34 @@ class CityController extends Controller
      * @param  \App\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, City $city)
+    public function update(CityRequest $request, $id)
     {
-        //
+        $city = $this->cityRepo->find($id);
+
+        if (is_null($city)) {
+            return response()->json(["message" => "No se puedo encontrar la ciudad"], 404);
+        }
+        $city = $this->cityRepo->update($city, $request->all());
+
+        return $this->sendResponse($city->toArray(), 'Ciudad encontrada!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\City  $city
+     * @param  \App\City  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(City $city)
+    public function destroy($id)
     {
-        //
+        $city = $this->cityRepo->find($id);
+
+        if (is_null($city)) {
+            return response()->json(["message" => "No se puedo encontrar la ciudad"], 404);
+        }
+
+        $this->cityRepo->delete($city);
+
+        return $this->sendResponse($id, 'Ciudad eliminada!');
     }
 }

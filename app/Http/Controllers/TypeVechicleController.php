@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\TypeVechicle;
+use App\Models\TypeVehicle;
 use Illuminate\Http\Request;
 
 class TypeVechicleController extends Controller
@@ -41,10 +41,10 @@ class TypeVechicleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\TypeVechicle  $typeVechicle
+     * @param  \App\Models\TypeVehicle  $typeVechicle
      * @return \Illuminate\Http\Response
      */
-    public function show(TypeVechicle $typeVechicle)
+    public function show(TypeVehicle $typeVechicle)
     {
         //
     }
@@ -52,10 +52,10 @@ class TypeVechicleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\TypeVechicle  $typeVechicle
+     * @param  \App\Models\TypeVehicle  $typeVechicle
      * @return \Illuminate\Http\Response
      */
-    public function edit(TypeVechicle $typeVechicle)
+    public function edit(TypeVehicle $typeVechicle)
     {
         //
     }
@@ -64,10 +64,10 @@ class TypeVechicleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\TypeVechicle  $typeVechicle
+     * @param  \App\Models\TypeVehicle  $typeVechicle
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TypeVechicle $typeVechicle)
+    public function update(Request $request, TypeVehicle $typeVechicle)
     {
         //
     }
@@ -75,10 +75,10 @@ class TypeVechicleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\TypeVechicle  $typeVechicle
+     * @param  \App\Models\TypeVehicle  $typeVechicle
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TypeVechicle $typeVechicle)
+    public function destroy(TypeVehicle $typeVechicle)
     {
         //
     }

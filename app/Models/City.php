@@ -32,6 +32,6 @@ class City extends Model
      */
     public static $rules = [
         'name'            => 'required|min:2|max:11',
-        'status'          => 'required',
+        'status'          => 'required|min:1|max:1',
     ];
 }
