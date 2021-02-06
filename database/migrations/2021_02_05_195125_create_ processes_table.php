@@ -13,7 +13,7 @@ class CreateAssignmentTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('assignment_types', function (Blueprint $table) {
+        Schema::create('processes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->boolean('status');
@@ -28,6 +28,6 @@ class CreateAssignmentTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('assignment_types');
+        Schema::dropIfExists('processes');
     }
 }

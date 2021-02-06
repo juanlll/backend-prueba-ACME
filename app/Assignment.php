@@ -12,8 +12,8 @@ class Assignment extends Model
 
     public $fillable = [
         'driver_id',
-        'owner_id',
-        'type_id',
+        'process_id',
+        'vehicle_id',
         'status',
     ];
 
@@ -24,8 +24,8 @@ class Assignment extends Model
      */
     protected $casts = [
         'driver_id'  => 'integer',
-        'owner_id'   => 'integer',
-        'type_id'    => 'integer',
+        'process_id'   => 'integer',
+        'vehicle_id'    => 'integer',
         'status'     => 'integer',
     ];
 
@@ -35,10 +35,10 @@ class Assignment extends Model
      * @var array
      */
     public static $rules = [
-        'driver_id'    => 'required|min:2|max:11',
-        'owner_id'     => 'required|min:2|max:11',
-        'type_id'      => 'required|min:2|max:11',
-        'status'       => 'required',
+        'driver_id'       => 'required|min:2|max:11',
+        'process_id'      => 'required|min:2|max:11',
+        'vehicle_id'      => 'required|min:2|max:11',
+        'status'          => 'required',
     ];
 
 }

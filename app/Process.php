@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TypeVechicle extends Model
+class Process extends Model
 {
-    public $table = 'type_vehicles';
+    public $table = 'processes';
 
     public $timestamps = true;
 

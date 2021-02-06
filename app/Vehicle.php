@@ -12,7 +12,10 @@ class Vehicle extends Model
 
     public $fillable = [
         'vehicle_plate',
+        'color',
+        'brand',
         'type_id',
+        'owner_id',
         'status',
     ];
 
@@ -23,7 +26,10 @@ class Vehicle extends Model
      */
     protected $casts = [
         'vehicle_plate'  => 'string',
+        'color'          => 'string',
+        'brand'          => 'string',
         'type_id'        => 'integer',
+        'owner_id'       => 'integer',
         'status'         => 'integer',
     ];
 
@@ -34,7 +40,11 @@ class Vehicle extends Model
      */
     public static $rules = [
         'vehicle_plate'   => 'required|min:2|max:11',
-        'type_id'         => 'required|min:2|max:11',
+        'color'           => 'required|min:2|max:11',
+        'brand'           => 'required|min:2|max:11',
+        'type_id'         => 'required',
+        'type_id'         => 'required',
         'status'          => 'required',
     ];
+
 }
