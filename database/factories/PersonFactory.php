@@ -8,7 +8,7 @@ $factory->define(App\Person::class, function (Faker $faker) {
         'second_name'          => $faker->firstName,
         'last_names'           => $faker->lastName,
         'address'              => $faker->address,
-        'phone'                => rand(3000000000, 9999999999),
+        'phone'                => rand(300000000, 999999999),
         'city_id'              => 1,
     ];
 });

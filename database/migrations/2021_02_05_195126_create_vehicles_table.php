@@ -15,11 +15,11 @@ class CreateVehiclesTable extends Migration
     {
         Schema::create('vehicles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('vehicle_plate');
-            $table->string('color');
-            $table->string('brand');
+            $table->string('vehicle_plate',7);
+            $table->string('color',50);
+            $table->string('brand',50);
             $table->integer('type_id')->unsigned();
-            $table->foreign('type_id')->references('id')->on('persons');
+            $table->foreign('type_id')->references('id')->on('type_vehicles');
             $table->integer('owner_id')->unsigned();
             $table->foreign('owner_id')->references('id')->on('persons');
             $table->boolean('status');

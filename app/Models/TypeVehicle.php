@@ -1,12 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class City extends Model
+class TypeVehicle extends Model
 {
-    public $table = 'cities';
+    public $table = 'type_vehicles';
 
     public $timestamps = true;
 
