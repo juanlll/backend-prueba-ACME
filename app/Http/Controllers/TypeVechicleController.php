@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\TypeVehicle;
+use App\Repositories\TypeVehicleRepository;
 use Illuminate\Http\Request;
+use App\Http\Requests\TypeVehicleRequest;
 
-class TypeVechicleController extends Controller
+class TypeVehicleController extends Controller
 {
+    protected $typeVehicleRepo;
+
+    public function __construct(TypeVehicleRepository $typeVehicleRepository)
+    {
+        $this->typeVehicleRepo = $typeVehicleRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,17 +22,8 @@ class TypeVechicleController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $typeVehicles = $this->typeVehicleRepo->getAll();
+        return $this->sendResponse($typeVehicles->toArray(), 'Tipo de vehiculos encontrados!');
     }
 
     /**
@@ -33,53 +32,59 @@ class TypeVechicleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TypeVehicleRequest $typeVehicleRequest)
     {
-        //
+        $typeVehicle =  $this->typeVehicleRepo->create($typeVehicleRequest->all());
+        return $this->sendResponse($typeVehicle->toArray(), 'Tipo de Vehiculo Creado!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TypeVehicle  $typeVechicle
+     * @param  \App\Models\TypeVehicle  $typeVehicle
      * @return \Illuminate\Http\Response
      */
-    public function show(TypeVehicle $typeVechicle)
+    public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\TypeVehicle  $typeVechicle
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(TypeVehicle $typeVechicle)
-    {
-        //
+        $typeVehicle = $this->typeVehicleRepo->find($id);
+        return $this->sendResponse($typeVehicle->toArray(), 'Tipo de Vehiculo encontrado!');
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TypeVehicle  $typeVechicle
+     * @param  \App\Models\TypeVehicle  $typeVehicle
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TypeVehicle $typeVechicle)
+    public function update(TypeVehicleRequest $request, $id)
     {
-        //
+        $typeVehicle = $this->typeVehicleRepo->find($id);
+
+        if (is_null($typeVehicle)) {
+            return response()->json(["message" => "No se puedo encontrar el vehiculo"], 404);
+        }
+        $typeVehicle = $this->typeVehicleRepo->update($typeVehicle, $request->all());
+
+        return $this->sendResponse($typeVehicle->toArray(), 'Tipo de Vehiculo encontrado!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TypeVehicle  $typeVechicle
+     * @param  \App\Models\TypeVehicle  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TypeVehicle $typeVechicle)
+    public function destroy($id)
     {
-        //
+        $typeVehicle = $this->typeVehicleRepo->find($id);
+
+        if (is_null($typeVehicle)) {
+            return response()->json(["message" => "No se puedo encontrar el vehiculo"], 404);
+        }
+
+        $this->typeVehicleRepo->delete($typeVehicle);
+
+        return $this->sendResponse($id, 'Tipo de Vehiculo eliminado!');
     }
 }

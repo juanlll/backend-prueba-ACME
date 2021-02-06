@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Vehicle;
+use App\Repositories\VehicleRepository;
 use Illuminate\Http\Request;
+use App\Http\Requests\VehicleRequest;
 
 class VehicleController extends Controller
 {
+    protected $vehicleRepo;
+
+    public function __construct(VehicleRepository $vehicleRepository)
+    {
+        $this->vehicleRepo = $vehicleRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,17 +22,8 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $persons = $this->vehicleRepo->getAll();
+        return $this->sendResponse($persons->toArray(), 'Vehiculos encontrados!');
     }
 
     /**
@@ -33,53 +32,59 @@ class VehicleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(VehicleRequest $personRequest)
     {
-        //
+        $person = $this->vehicleRepo->create($personRequest->all());
+        return $this->sendResponse($person->toArray(), 'Vehiculo Creado!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Vehicle  $vehicle
+     * @param  \App\Models\Vehicle  $person
      * @return \Illuminate\Http\Response
      */
-    public function show(Vehicle $vehicle)
+    public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Vehicle  $vehicle
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Vehicle $vehicle)
-    {
-        //
+        $person = $this->vehicleRepo->find($id);
+        return $this->sendResponse($person->toArray(), 'Vehiculo encontrado!');
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Vehicle  $vehicle
+     * @param  \App\Models\Vehicle  $person
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Vehicle $vehicle)
+    public function update(VehicleRequest $request, $id)
     {
-        //
+        $person = $this->vehicleRepo->find($id);
+
+        if (is_null($person)) {
+            return response()->json(["message" => "No se puedo encontrar el vehiculo"], 404);
+        }
+        $person = $this->vehicleRepo->update($person, $request->all());
+
+        return $this->sendResponse($person->toArray(), 'Vehiculo encontrado!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Vehicle  $vehicle
+     * @param  \App\Models\Vehicle  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Vehicle $vehicle)
+    public function destroy($id)
     {
-        //
+        $person = $this->vehicleRepo->find($id);
+
+        if (is_null($person)) {
+            return response()->json(["message" => "No se puedo encontrar el vehiculo"], 404);
+        }
+
+        $this->vehicleRepo->delete($person);
+
+        return $this->sendResponse($id, 'Vehiculo eliminado!');
     }
 }

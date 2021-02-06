@@ -23,7 +23,7 @@ class ProcessController extends Controller
     public function index()
     {
         $persons = $this->processRepo->getAll();
-        return $this->sendResponse($persons->toArray(), 'Procesos encontradas!');
+        return $this->sendResponse($persons->toArray(), 'Procesos encontrados!');
     }
 
     /**
@@ -35,7 +35,7 @@ class ProcessController extends Controller
     public function store(ProcessRequest $personRequest)
     {
         $person = $this->processRepo->create($personRequest->all());
-        return $this->sendResponse($person->toArray(), 'Proceso Creada!');
+        return $this->sendResponse($person->toArray(), 'Proceso Creado!');
     }
 
     /**
@@ -62,7 +62,7 @@ class ProcessController extends Controller
         $person = $this->processRepo->find($id);
 
         if (is_null($person)) {
-            return response()->json(["message" => "No se puedo encontrar la ciudad"], 404);
+            return response()->json(["message" => "No se puedo encontrar el proceso"], 404);
         }
         $person = $this->processRepo->update($person, $request->all());
 
@@ -80,11 +80,11 @@ class ProcessController extends Controller
         $person = $this->processRepo->find($id);
 
         if (is_null($person)) {
-            return response()->json(["message" => "No se puedo encontrar la proceso"], 404);
+            return response()->json(["message" => "No se puedo encontrar el proceso"], 404);
         }
 
         $this->processRepo->delete($person);
 
-        return $this->sendResponse($id, 'Proceso eliminada!');
+        return $this->sendResponse($id, 'Proceso eliminado!');
     }
 }
