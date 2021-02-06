@@ -41,4 +41,28 @@ class Assignment extends Model
         'status'          => 'required',
     ];
 
+     /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function driver()
+    {
+        return $this->belongsTo(\App\Models\Person::class, 'driver_id', 'id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function vehicle()
+    {
+        return $this->belongsTo(\App\Models\Vehicle::class, 'vehicle_id', 'id');
+    }
+
+        /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function process()
+    {
+        return $this->belongsTo(\App\Models\Process::class, 'process_id', 'id');
+    }
+
 }

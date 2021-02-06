@@ -23,7 +23,7 @@ class VehicleController extends AppBaseController
      */
     public function index()
     {
-        $persons = $this->vehicleRepo->getAll();
+        $persons = $this->vehicleRepo->getAllWithRele();
         return $this->sendResponse($persons->toArray(), 'Vehiculos encontrados!');
     }
 

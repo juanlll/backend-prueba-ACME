@@ -51,5 +51,12 @@ class Person extends Model
         'status'              => 'required',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function city()
+    {
+        return $this->belongsTo(\App\Models\City::class, 'city_id', 'id');
+    }
 
 }

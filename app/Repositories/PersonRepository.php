@@ -10,4 +10,8 @@ class PersonRepository extends BaseRepository {
         return new Person();
     }
 
+    public function getAllWithRele(){
+        return $this->getModel()->with('city')->get();
+    }
+
 }

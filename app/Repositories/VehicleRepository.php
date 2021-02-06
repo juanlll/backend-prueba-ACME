@@ -10,4 +10,8 @@ class VehicleRepository extends BaseRepository {
         return new Vehicle();
     }
 
+    public function getAllWithRele(){
+        return $this->getModel()->with('owner','type')->where('status',1)->get();
+    }
+
 }

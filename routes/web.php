@@ -11,10 +11,11 @@
 |
 */
 
-/* Route::get('/', function () {
+Route::get('/', function () {
  return \File::get(public_path() . '/dist/index.html');
 });
 
+/*
 Route::get('/home', function () {
     return \File::get(public_path() . '/dist/index.html');
 });

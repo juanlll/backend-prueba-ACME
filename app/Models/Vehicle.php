@@ -42,9 +42,25 @@ class Vehicle extends Model
         'vehicle_plate'   => 'required|min:2|max:11',
         'color'           => 'required|min:2|max:11',
         'brand'           => 'required|min:2|max:11',
-        'type_id'         => 'required',
+        'owner_id'         => 'required',
         'type_id'         => 'required',
         'status'          => 'required',
     ];
+
+         /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function owner()
+    {
+        return $this->belongsTo(\App\Models\Person::class, 'owner_id', 'id');
+    }
+
+             /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function type()
+    {
+        return $this->belongsTo(\App\Models\TypeVehicle::class, 'type_id', 'id');
+    }
 
 }

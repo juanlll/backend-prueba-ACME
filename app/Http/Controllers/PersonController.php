@@ -23,7 +23,7 @@ class PersonController extends AppBaseController
      */
     public function index()
     {
-        $persons = $this->personRepo->getOnlyEnables();
+        $persons = $this->personRepo->getAllWithRele();
         return $this->sendResponse($persons->toArray(), 'Personas encontradas!');
     }
 

@@ -23,8 +23,8 @@ class AssignmentController extends AppBaseController
      */
     public function index()
     {
-        $persons = $this->assignmentRepo->getAll();
-        return $this->sendResponse($persons->toArray(), 'Asignaciones encontradas!');
+        $assignments = $this->assignmentRepo->getAllWithRele();
+        return $this->sendResponse($assignments->toArray(), 'Asignaciones encontradas!');
     }
 
     /**
@@ -35,39 +35,39 @@ class AssignmentController extends AppBaseController
      */
     public function store(AssignmentRequest $assignmentRequest)
     {
-        $person = $this->assignmentRepo->create($assignmentRequest->all());
-        return $this->sendResponse($person->toArray(), 'Asignación Creada!');
+        $assignment = $this->assignmentRepo->assignVehicleToDriver($assignmentRequest->all());
+        return $this->sendResponse($assignment->toArray(), 'Asignación Creada!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Assignment  $person
+     * @param  \App\Models\Assignment  $assignment
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $person = $this->assignmentRepo->find($id);
-        return $this->sendResponse($person->toArray(), 'Asignación encontrada!');
+        $assignment = $this->assignmentRepo->find($id);
+        return $this->sendResponse($assignment->toArray(), 'Asignación encontrada!');
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Assignment  $person
+     * @param  \App\Models\Assignment  $assignment
      * @return \Illuminate\Http\Response
      */
     public function update(AssignmentRequest $request, $id)
     {
-        $person = $this->assignmentRepo->find($id);
+        $assignment = $this->assignmentRepo->find($id);
 
-        if (is_null($person)) {
+        if (is_null($assignment)) {
             return response()->json(["message" => "No se puedo encontrar la asignación"], 404);
         }
-        $person = $this->assignmentRepo->update($person, $request->all());
+        $assignment = $this->assignmentRepo->update($assignment, $request->all());
 
-        return $this->sendResponse($person->toArray(), 'Asignación encontrada!');
+        return $this->sendResponse($assignment->toArray(), 'Asignación encontrada!');
     }
 
     /**
@@ -78,13 +78,13 @@ class AssignmentController extends AppBaseController
      */
     public function destroy($id)
     {
-        $person = $this->assignmentRepo->find($id);
+        $assignment = $this->assignmentRepo->find($id);
 
-        if (is_null($person)) {
+        if (is_null($assignment)) {
             return response()->json(["message" => "No se puedo encontrar la asignación"], 404);
         }
 
-        $this->assignmentRepo->delete($person);
+        $this->assignmentRepo->delete($assignment);
 
         return $this->sendResponse($id, 'Asignación eliminada!');
     }
