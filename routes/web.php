@@ -15,8 +15,9 @@ Route::get('/', function () {
  return \File::get(public_path() . '/dist/index.html');
 });
 
+
 /*
-Route::get('/home', function () {
+Route::get('/home', func∫tion () {
     return \File::get(public_path() . '/dist/index.html');
 });
 
