@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'pgsql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -28,8 +28,24 @@ return [
     | All database work in Laravel is done through the PHP PDO facilities
     | so make sure you have the driver for your particular database of
     | choice installed on your machine before you begin development.
+    Host
+ec2-54-145-249-177.compute-1.amazonaws.com
+Database
+d1jflrtf7gorqk
+User
+fgyrsvswiuirtl
+Port
+5432
+Password
+8d27dcc126fffc3804082ae380e711740707f9afb97342d0347e09fa5bdeffcd
+HATE
+postgres://fgyrsvswiuirtl:8d27dcc126fffc3804082ae380e711740707f9afb97342d0347e09fa5bdeffcd@ec2-54-145-249-177.compute-1.amazonaws.com:5432/d1jflrtf7gorqk
+Heroku CLI
+heroku pg:psql postgresql-defined-71844 --app projectprueba
     |
     */
+
+
 
     'connections' => [
 
@@ -56,11 +72,11 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'host' => env('DB_HOST', 'ec2-54-145-249-177.compute-1.amazonaws.com'),
             'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'database' => env('DB_DATABASE', 'd1jflrtf7gorqk'),
+            'username' => env('DB_USERNAME', 'fgyrsvswiuirtl'),
+            'password' => env('DB_PASSWORD', '8d27dcc126fffc3804082ae380e711740707f9afb97342d0347e09fa5bdeffcd'),
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',
