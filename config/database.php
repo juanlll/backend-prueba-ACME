@@ -28,22 +28,6 @@ return [
     | All database work in Laravel is done through the PHP PDO facilities
     | so make sure you have the driver for your particular database of
     | choice installed on your machine before you begin development.
-    Host
-Host
-ec2-52-205-3-3.compute-1.amazonaws.com
-Database
-d38d9dursjv09l
-User
-ycvrkrvtnmmpoo
-Port
-5432
-Password
-ae8c05ad02e94bfd3d13e8c13008edfc4165f6fb1e94155a769a0d6926ecd81a
-HATE
-postgres://ycvrkrvtnmmpoo:ae8c05ad02e94bfd3d13e8c13008edfc4165f6fb1e94155a769a0d6926ecd81a@ec2-52-205-3-3.compute-1.amazonaws.com:5432/d38d9dursjv09l
-Heroku CLI
-heroku pg:psql postgresql-concentric-90603 --app projectprueba
-    |
     */
 
 
@@ -75,9 +59,9 @@ heroku pg:psql postgresql-concentric-90603 --app projectprueba
             'driver' => 'pgsql',
             'host' => env('DB_HOST', 'ec2-52-205-3-3.compute-1.amazonaws.com'),
             'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'd38d9dursjv09l'),
-            'username' => env('DB_USERNAME', 'ycvrkrvtnmmpoo'),
-            'password' => env('DB_PASSWORD', 'ae8c05ad02e94bfd3d13e8c13008edfc4165f6fb1e94155a769a0d6926ecd81a'),
+            'database' => env('DB_DATABASE', 'd1esev1v9j7bhi'),
+            'username' => env('DB_USERNAME', 'rjfpmzgmubajqy'),
+            'password' => env('DB_PASSWORD', 'b8288bea59b6f845719f06bb29cc4cc13f61f0ac1fcee1ae847b12793d2c0a9d'),
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',
