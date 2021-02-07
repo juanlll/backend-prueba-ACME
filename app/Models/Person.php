@@ -42,13 +42,12 @@ class Person extends Model
      */
     public static $rules = [
         'first_name'           => 'required|min:2|max:50',
-        'first_name'           => 'required|min:2|max:50',
         'second_name'          => 'required|min:2|max:50',
-        'last_names'           => 'required|min:2|max:50',
+        'last_names'           => 'required|min:2|max:100',
         'address'              => 'required|min:2|max:200',
-        'phone'                => 'required|min:2|max:10',
+        'phone'                => 'required|numeric|min:2|max:10',
         'city_id'              => 'required',
-        'status'              => 'required',
+        'status'              =>   'required',
     ];
 
     /**

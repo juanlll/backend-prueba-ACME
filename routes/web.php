@@ -15,17 +15,10 @@ Route::get('/', function () {
  return \File::get(public_path() . '/dist/index.html');
 });
 
-
-/*
-Route::get('/home', func∫tion () {
+Route::get('/persons', function () {
     return \File::get(public_path() . '/dist/index.html');
 });
 
-Route::get('/about', function () {
-    return \File::get(public_path() . '/dist/index.html');
+Route::get('/vehicles', function () {
+return \File::get(public_path() . '/dist/index.html');
 });
-
-Route::get('/login', function () {
-    return \File::get(public_path() . '/dist/index.html');
-});
- */

@@ -11,7 +11,7 @@ class PersonRepository extends BaseRepository {
     }
 
     public function getAllWithRele(){
-        return $this->getModel()->with('city')->get();
+        return $this->getModel()->with('city')->where('status',1)->get();
     }
 
 }

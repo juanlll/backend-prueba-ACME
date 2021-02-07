@@ -39,7 +39,7 @@ class Vehicle extends Model
      * @var array
      */
     public static $rules = [
-        'vehicle_plate'   => 'required|min:2|max:11',
+        'vehicle_plate'   => 'required|min:6|max:7',
         'color'           => 'required|min:2|max:11',
         'brand'           => 'required|min:2|max:11',
         'owner_id'         => 'required',
