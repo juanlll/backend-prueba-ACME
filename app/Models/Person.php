@@ -45,7 +45,7 @@ class Person extends Model
         'second_name'          => 'required|min:2|max:50',
         'last_names'           => 'required|min:2|max:100',
         'address'              => 'required|min:2|max:200',
-        'phone'                => 'required|numeric|max:10',
+        'phone'                => 'required|numeric|digits:10',
         'city_id'              => 'required',
         'status'              =>   'required',
     ];
