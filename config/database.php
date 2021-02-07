@@ -29,19 +29,20 @@ return [
     | so make sure you have the driver for your particular database of
     | choice installed on your machine before you begin development.
     Host
-ec2-54-145-249-177.compute-1.amazonaws.com
+Host
+ec2-52-205-3-3.compute-1.amazonaws.com
 Database
-d1jflrtf7gorqk
+d38d9dursjv09l
 User
-fgyrsvswiuirtl
+ycvrkrvtnmmpoo
 Port
 5432
 Password
-8d27dcc126fffc3804082ae380e711740707f9afb97342d0347e09fa5bdeffcd
+ae8c05ad02e94bfd3d13e8c13008edfc4165f6fb1e94155a769a0d6926ecd81a
 HATE
-postgres://fgyrsvswiuirtl:8d27dcc126fffc3804082ae380e711740707f9afb97342d0347e09fa5bdeffcd@ec2-54-145-249-177.compute-1.amazonaws.com:5432/d1jflrtf7gorqk
+postgres://ycvrkrvtnmmpoo:ae8c05ad02e94bfd3d13e8c13008edfc4165f6fb1e94155a769a0d6926ecd81a@ec2-52-205-3-3.compute-1.amazonaws.com:5432/d38d9dursjv09l
 Heroku CLI
-heroku pg:psql postgresql-defined-71844 --app projectprueba
+heroku pg:psql postgresql-concentric-90603 --app projectprueba
     |
     */
 
@@ -72,11 +73,11 @@ heroku pg:psql postgresql-defined-71844 --app projectprueba
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'host' => env('DB_HOST', 'ec2-54-145-249-177.compute-1.amazonaws.com'),
+            'host' => env('DB_HOST', 'ec2-52-205-3-3.compute-1.amazonaws.com'),
             'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'd1jflrtf7gorqk'),
-            'username' => env('DB_USERNAME', 'fgyrsvswiuirtl'),
-            'password' => env('DB_PASSWORD', '8d27dcc126fffc3804082ae380e711740707f9afb97342d0347e09fa5bdeffcd'),
+            'database' => env('DB_DATABASE', 'd38d9dursjv09l'),
+            'username' => env('DB_USERNAME', 'ycvrkrvtnmmpoo'),
+            'password' => env('DB_PASSWORD', 'ae8c05ad02e94bfd3d13e8c13008edfc4165f6fb1e94155a769a0d6926ecd81a'),
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',
